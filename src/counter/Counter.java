@@ -3,7 +3,7 @@ package counter;
  * A simple counter.
  */
 
-public class Counter  {
+public class Counter extends java.util.Observable {
 	private int count;
 	
 	public Counter() {
@@ -23,6 +23,8 @@ public class Counter  {
 		setChanged();
 		notifyObservers();
 	}
+	
+	
 	
 	public int getCount() {
 		return count;

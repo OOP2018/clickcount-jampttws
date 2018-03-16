@@ -38,11 +38,14 @@ public class Main extends Application {
 			// This is interesting -- we don't need to use a cast!
 			ClickController controller = loader.getController();
 			
+			
 			// Dependency Injection:
 			// Set the Counter object we want the view to update.
 			
 			//TODO set a reference to Counter in the controller
-
+			controller.setCounter(counter);
+            
+			
 			// Build and show the scene
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
@@ -59,17 +62,20 @@ public class Main extends Application {
 		// We set a reference to the counter using the constructor.
 		
 		//TODO Create a ConsoleView with dependency injection.
+		ConsoleView view = new ConsoleView(counter);
 		
 		//TODO Add ConsoleView as an observer of Counter
-		
+		counter.addObserver(view);
 		
 		// Create another window that references the SAME counter. 
 		
 		//TODO: Complete the CounterView class.
-		//CounterView view = new CounterView(counter);
+		CounterView view2 = new CounterView(counter);
 		
 		//TODO Add CounterView as observer.
+		counter.addObserver(view2);
 		//TODO Show CounterView by calling its run() method
+		view2.run();
 	}
 	
 	public static void main(String[] args) {
